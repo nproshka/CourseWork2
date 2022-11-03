@@ -78,7 +78,10 @@ public class Main {
                 break;
         }
 
-        TaskManager.addNewTask(taskName, taskDescription, taskType, taskFrequency);
+        System.out.println("Введите дату создания задачи.");
+
+        TaskManager.addNewTask(taskName, taskDescription, taskType, taskFrequency, getDate(scanner));
+
     }
     private static void deleteTask(Scanner scanner) {
         System.out.print("Введите id задачи, которую хотите удалить: ");
@@ -86,6 +89,13 @@ public class Main {
 
     }
     private static void getTasksOnSelectedDay(Scanner scanner) {
+
+        TaskManager.getTasksOnDay(getDate(scanner));
+        System.out.println("\n");
+
+    }
+    private static LocalDate getDate(Scanner scanner) {
+
         System.out.print("Введите год: ");
         int year = Integer.parseInt(scanner.nextLine());
 
@@ -95,11 +105,9 @@ public class Main {
         System.out.print("Введите день: ");
         int day = Integer.parseInt(scanner.nextLine());
 
-        LocalDate date = LocalDate.of(year, month, day);
-
-        TaskManager.getTasksOnDay(date);
-
+        return LocalDate.of(year, month, day);
     }
+
 
     private static void printMenu() {
         System.out.println(

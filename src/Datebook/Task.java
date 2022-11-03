@@ -27,7 +27,7 @@ public class Task {
         }
 
         if (frequency == null || frequency.isEmpty() || frequency.isBlank()) {
-            throw new RuntimeException("Пожалуйста, введите переодичность задачи!");
+            throw new IllegalArgumentException("Пожалуйста, введите переодичность задачи!");
         }
         this.frequency = frequency;
 
